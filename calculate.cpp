@@ -5,11 +5,14 @@
 void calculate_and_print(int amount, int rate, std::string currency)
 {
     int result = amount * rate;
+    int rate_bef_comm = rate / 10000;
+    int rate_aft_comm = rate % 10000;
     int zloty = result / 1000000;
     int grosz = (result % 1000000) / 10000;
     if((result - zloty*1000000 - grosz*10000) >= 5000) grosz++;
     int small_ones = amount%100;
     std::string filler = "";
     if(small_ones < 10) filler = "0";
-    std::cout<<amount/100<<","<<filler<<small_ones<<" "<<currency<<" za "<<zloty<<" złotych "<<grosz<<" groszy po kursie "<<rate<<"\n"; // message written in Polish because it is supposed to be a Polish currency exchange
+
+    std::cout<<amount/100<<","<<filler<<small_ones<<" "<<currency<<" za "<<zloty<<" złotych "<<grosz<<" groszy po kursie "<<rate_bef_comm<<","<<rate_aft_comm<<"\n"; // message written in Polish because it is supposed to be a Polish currency exchange
 }
